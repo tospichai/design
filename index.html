@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS framework -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- import fonts มาใช้ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Prompt:wght@200;300;400;500;600;700;800;900&Oswald:wght@200;300;400;500,600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- import slide library มาใช้ -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
+
+    <!-- import style มาใช้ -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- import Icon มาใช้ -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- ชื่อบน title ของเว็บ -->
+    <title>Gravity Store</title>
+
+</head>
+
+<body>
+    <!--
+    shadow-lg คือ ทำให้มีเงาในขนาด lg
+    fixed คือทำให้มันตรึงอยู่กับที่ เวลาใช้จะคู่กับ top-0 อยู่ตำแหน่งบนสุด w-full กว้าง 100%
+    -->
+    <div class="shadow-lg fixed top-0 w-full bg-white z-10">
+        <!--
+        อ่าน docs ที่ https://tailwindcss.com/docs/installation
+        ขนาดจะมีตั้งแต่ xs sm md lg xl 2xl บางอย่างที่เรียกใช้อาจมีถึง 7xl
+        ตัวย่อของด้าน t ด้านบน t มาจาก top 
+                l ด้านซ้าย l มาจาก left 
+                r ด้านขวา r มาจาก right 
+                b ด้านล่าง b มาจาก bottom 
+
+        flex จะทำให้ element ข้างในเรียงกันมาทางขวา
+        justify-between คือจัดให้ element ห่างกันแบบสุดจอ
+            ถ้ามี 2 element ด้านใน จะอยู่คนละฝั่ง
+            ถ้ามี 3 จะ จะอยู่ซ้ายสุด 1 กลาง 1 ขวาสุด 1
+            ถ้ามีมากกว่านั้นจะห่างเท่าๆกัน
+            ที่เราทำจะมี 3 element
+        items-center คือ จัดทำให้ element อยู่ในระดับกึ่งกลาง ลองปรับเอาออกแล้วดูความแตกต่าง
+        p คือ จะทำให้ขยายจากตัวที่เราใส่ สามารถใส่เป็น px ได้ ก็ใช้ p-[12px]
+        -->
+        <nav class="flex justify-between items-center px-10 py-4 relative">
+            <!--
+            flex-1 จะทำให้ขนาดเท่ากัน ในที่นี้เราจะทำให้ ช่องแรกกับช่องสุดท้ายเท่ากัน
+            -->
+            <div class="flex-1">
+                <div>
+                    <span class="material-symbols-outlined">menu</span>
+                </div>
+                <div class="absolute bottom-0 left-0 w-full ">
+                    <!--
+                    tracking-widest คือ ทำให้ระยะห่างระหว่างตัวอักษรเท่ากัน
+                    uppercase คือ ทำให้อักษรเป็น พิมพ์ใหญ่
+                    text-xs ตัวอักษรขนาดเล็กที่สุด
+                    font-bold ตัวอักษรหนา
+                    gap คือช่องว่างระหว่าง element ข้างใน ปรับให้ห่างกันนิดนึง
+                    p คือ 
+                        p ปกติจะขยายรอบด้าน
+                        pt ขยายด้านบน t มาจาก top 
+                        pl ขยายด้านซ้าย l มาจาก left 
+                        pr ขยายด้านขวา r มาจาก right 
+                        pb ขยายด้านล่าง b มาจาก bottom 
+                    -->
+                    <ul class="flex justify-center gap-10 tracking-widest uppercase text-xs font-bold items-center">
+                        <li class="relative p-4">
+                            Air Jordan
+                        </li>
+                        <li class="relative p-4">YEEZY</li>
+                        <li class="relative p-4">Nike</li>
+                        <li class="relative p-4">Adidas</li>
+                        <li class="relative p-4">Other Shoes</li>
+                        <li class="relative p-4">Supreme</li>
+                    </ul>
+                </div>
+            </div>
+            <!--
+            shrink-0 จะทำให้ block นี้ไม่ยืดหดตัว ซึ่งจะทำให้อยู่ตรงกลางตลอด
+            -->
+            <div class="shrink-0">
+                <!-- 
+            class w-[*px] คือ จะกำหนด width ให้มัน ตามด้านล่างคือ 140px
+            src คือ source ที่มาของรูป เราจะนับจากไฟล์นี้ จะเห็นว่ามันมี images ก่อนถึงจะเข้าถึงรูปภาพ เราเลยต้องเขียนแบบนี้
+            alt จะเอาไว้ให้ Google อ่านเวลาเข้ามา จะรู้ว่านี่คือ gravity store logo *มีผลต่อ SEO
+            title จะขึ้นมาเวลาเราชี้ที่รูปภาพ
+            -->
+                <img class="w-[140px] mb-9" src="images/logo.png" alt="gravity store logo" title="Gravity Store">
+            </div>
+            <!-- 
+            justify-end คือจัดให้เรียงกันอยู่ขวาสุด
+            -->
+            <div class="flex gap-2 justify-end flex-1">
+                <!--
+                เวลาจะหา icon ก็เข้าไปที่ https://fonts.google.com/icons
+            แล้ว search หา icon แล้ว Copy html คล้ายๆด้านล่างมาให้
+            -->
+                <div class="p-2">
+                    <span class="material-symbols-outlined">
+                        account_circle
+                    </span>
+                </div>
+                <div class="p-2">
+                    <span class="material-symbols-outlined">
+                        search
+                    </span>
+                </div>
+                <div class="p-2">
+                    <span class="material-symbols-outlined">
+                        shopping_bag
+                    </span>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <section id="slide" class="mt-[128px]">
+        <div class="slide">
+            <img class="w-full" src="images/s1.webp">
+            <img class="w-full" src="images/s2.webp">
+            <img class="w-full" src="images/s1.webp">
+        </div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate reiciendis necessitatibus totam eligendi dicta, corporis ipsum dolorum quibusdam quaerat esse, cumque delectus et id earum accusamus deserunt, perferendis maxime commodi?
+    </section>
+
+    <!-- import js ที่ต้องใช้สำหรับ library slide  -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('.slide').slick({
+          slidesToShow: 1,
+          infinite: true,
+          speed: 500,
+          dots: true,
+          fade: true,
+          swipeToSlide: true,
+          cssEase: 'linear',
+          prevArrow: false,
+            nextArrow: false
+        });
+      });
+    </script>
+</body>
+</html>
